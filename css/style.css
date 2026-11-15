@@ -1,0 +1,118 @@
+/* Portfolio Oria — sobre. Charte : or, vert profond, crème ; lavande en touche. */
+@font-face { font-family: "Fraunces"; src: url("../fonts/fraunces-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url("../fonts/fraunces-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Albert Sans"; src: url("../fonts/albert-sans-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Albert Sans"; src: url("../fonts/albert-sans-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+
+:root {
+  --creme: #f8f4e8;
+  --surface: #fdfbf4;
+  --encre: #232a1b;
+  --encre-douce: #4d5442;
+  --vert: #3b4a2e;
+  --or: #d19d33;
+  --or-fonce: #8a6417; /* or lisible sur crème (contraste > 4.5) */
+  --lavande: #d9d0ee;
+  --filet: #e3dcbf;
+  --titre: "Fraunces", Georgia, serif;
+  --ui: "Albert Sans", system-ui, sans-serif;
+  --rayon: 16px;
+  --ombre: 0 8px 22px rgba(35, 42, 27, 0.10);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --creme: #1d2217;
+    --surface: #262d1e;
+    --encre: #f4efdc;
+    --encre-douce: #c3c4ae;
+    --vert: #cfd8b8;
+    --or-fonce: #e0b556;
+    --lavande: #4a3b68;
+    --filet: #3a4230;
+    --ombre: 0 8px 22px rgba(0, 0, 0, 0.35);
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--creme); color: var(--encre);
+  font-family: var(--ui); font-size: 1.0625rem; line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--or); outline-offset: 3px; border-radius: 6px; }
+.conteneur { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--titre); font-weight: 380; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+h1 em, h2 em { font-style: italic; color: var(--or-fonce); }
+
+/* En-tête */
+.entete { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--creme) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--filet); }
+.entete .conteneur { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.marque { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-family: var(--titre); font-style: italic; font-size: 1.5rem; }
+.marque img { width: 34px; height: 34px; }
+.nav { display: flex; gap: 1.6rem; }
+.nav a { text-decoration: none; font-size: .95rem; color: var(--encre-douce); }
+.nav a:hover { color: var(--encre); text-decoration: underline; text-decoration-color: var(--or); text-underline-offset: 6px; }
+
+/* Héros */
+.heros { padding: clamp(4rem, 12vw, 8rem) 0 clamp(3rem, 8vw, 5rem); position: relative; overflow: hidden; }
+.heros .conteneur { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: center; }
+.sur-titre { font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; color: var(--or-fonce); font-weight: 600; margin: 0 0 1.2rem; }
+.heros h1 { font-size: clamp(2.6rem, 6.5vw, 4.6rem); }
+.heros p.intro { max-width: 34rem; color: var(--encre-douce); margin: 1.6rem 0 2rem; font-size: 1.15rem; }
+.heros .symbole { width: min(100%, 320px); justify-self: center; opacity: .95; }
+.boutons { display: flex; flex-wrap: wrap; gap: .8rem; }
+.bouton { display: inline-block; padding: .75rem 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: .98rem; border: 1.5px solid var(--vert); transition: transform .15s, background .15s; }
+.bouton.plein { background: var(--vert); color: var(--creme); }
+@media (prefers-color-scheme: dark) { .bouton.plein { color: #1d2217; } }
+.bouton:hover { transform: translateY(-2px); }
+.bouton.vide:hover { background: var(--lavande); }
+
+/* Sections */
+section { padding: clamp(3.5rem, 8vw, 6rem) 0; scroll-margin-top: 64px; }
+.filet { height: 1px; background: linear-gradient(90deg, transparent, var(--or), transparent); border: 0; margin: 0; opacity: .6; }
+.titre-section { margin-bottom: 2.8rem; max-width: 36rem; }
+.titre-section h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
+.titre-section p { color: var(--encre-douce); margin: .8rem 0 0; }
+
+/* Projets */
+.grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
+.carte { background: var(--surface); border: 1px solid var(--filet); border-radius: var(--rayon); padding: 1.7rem; box-shadow: var(--ombre); border-top: 4px solid var(--teinte, var(--or)); display: flex; flex-direction: column; gap: .8rem; transition: transform .2s; }
+.carte:hover { transform: translateY(-4px); }
+.carte img { width: 64px; height: 64px; }
+.carte h3 { font-size: 1.6rem; font-style: italic; }
+.carte p { margin: 0; color: var(--encre-douce); font-size: 1rem; }
+.etiquettes { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; padding-top: .4rem; }
+.etiquettes span { font-size: .78rem; padding: .15rem .65rem; border-radius: 999px; background: var(--lavande); color: var(--encre); }
+
+/* À propos */
+.apropos { background: var(--surface); border-block: 1px solid var(--filet); }
+.deux { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.deux p { color: var(--encre-douce); margin: 0 0 1.1rem; }
+.competences { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+.competences li { display: grid; gap: .35rem; }
+.competences .ligne { display: flex; justify-content: space-between; font-weight: 600; font-size: .98rem; }
+.competences small { font-weight: 400; color: var(--encre-douce); }
+.piste { height: 6px; border-radius: 99px; background: var(--filet); overflow: hidden; }
+.piste i { display: block; height: 100%; width: var(--n); background: linear-gradient(90deg, var(--vert), var(--or)); border-radius: 99px; }
+
+/* Contact */
+.contact { text-align: center; }
+.contact .titre-section { margin-inline: auto; }
+.contact .boutons { justify-content: center; }
+.pied { padding: 2rem 0 3rem; text-align: center; color: var(--encre-douce); font-size: .9rem; }
+.pied img { width: 120px; margin: 0 auto 1rem; opacity: .85; }
+
+/* Apparition douce */
+.apparait { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+.apparait.vu { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .apparait { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+@media (max-width: 760px) {
+  .heros .conteneur, .deux { grid-template-columns: 1fr; gap: 2.2rem; }
+  .heros .symbole { width: 160px; order: -1; justify-self: start; }
+  .nav { gap: 1rem; }
+  .marque span { display: none; }
+}
